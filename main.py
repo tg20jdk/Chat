@@ -28,7 +28,7 @@ def index():
                 .props('rounded outlined').classes('flex-grow') \
                 .on('keydown.enter', send)
 
-# Use a blocking run for serverless deployment
-if __name__ == '__main__':
+# Adjust for Render's multiprocessing environment
+if __name__ in {"__main__", "__mp_main__"}:
     ui.run()
     
