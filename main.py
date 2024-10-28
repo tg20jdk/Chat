@@ -6,7 +6,7 @@ messages = []
 @ui.refreshable
 def chat_messages(own_id):
     for user_id, avatar, text in messages:
-        ui.chat_message(avatar=avatar, text=text, sent=user_id==own_id)
+        ui.chat_message(avatar=avatar, text=text, sent=user_id == own_id)
 
 @ui.page('/')
 def index():
@@ -28,4 +28,7 @@ def index():
                 .props('rounded outlined').classes('flex-grow') \
                 .on('keydown.enter', send)
 
-ui.run()
+# Use a blocking run for serverless deployment
+if __name__ == '__main__':
+    ui.run()
+    
